@@ -40,7 +40,7 @@ import "./.next/dev/types/routes.d.ts";
 2.  React 19+
 3.  NextAuth.js v5
 4.  TypeScript 5
-5.  TailwindCSS (Assuming this will be integrated for styling, though not explicitly in previous code snippets)
+5.  TailwindCSS
 
 ## How It’s Organized
 
