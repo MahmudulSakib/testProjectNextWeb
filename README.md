@@ -10,7 +10,7 @@
     npm run dev
 4.  Open `http://localhost:3000
 
-## 📝 TypeScript Setup Notes
+## TypeScript Setup Notes
 
 This project includes a **TypeScript reference file** for Next.js:
 
@@ -22,6 +22,7 @@ import "./.next/dev/types/routes.d.ts";
 // NOTE: This file should **not** be edited manually.
 // For more information, see the official Next.js documentation:
 // https://nextjs.org/docs/app/api-reference/config/typescript
+```
 
 ## What it does
 
@@ -65,4 +66,3 @@ import "./.next/dev/types/routes.d.ts";
 4.  If the user is logged in, checks their role.
 5.  Redirects to `/` or `/auth/signin` if they aren’t allowed.
 6.  This makes sure only the right users see the right pages.
-```
