@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js App Router + NextAuth v5 with Role-Based Access
 
-## Getting Started
+## How to Run
 
-First, run the development server:
+1.  **Install packages:**
+    npm install
+2.  **Run the project:**
+    npm run dev
+3.  Open `http://localhost:3
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## What it does
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1.  Lets users log in using a username and password.
+2.  Assigns a role to each user (like admin or user).
+3.  Protects pages based on roles. For example:
+    - Admin pages → only admins can see.
+    - Normal user pages → both users and admins can see.
+4.  Redirects users to the right page after login based on their role.
+5.  Shows how to use middleware to protect pages globally.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tech Used
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1.  Next.js 16+ (App Router)
+2.  React 19+
+3.  NextAuth.js v5
+4.  TypeScript 5
+5.  TailwindCSS (Assuming this will be integrated for styling, though not explicitly in previous code snippets)
 
-## Learn More
+## How It’s Organized
 
-To learn more about Next.js, take a look at the following resources:
+1.  `app/` → all your pages
+2.  `components/` → reusable React components (like Navbar)
+3.  `lib/protectedRoutes.ts` → defines which page needs which role
+4.  `middleware.ts` → checks if the user is logged in and allowed to see the page
+5.  `auth.ts` → configures NextAuth v5
+6.  `types/next-auth.d.ts` → adds a role property to user/session types
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Users & Roles
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. const users = [ { username: "adminuser", password: "adminpassword", role: "admin" }, { username: "normaluser", password: "userpassword", role: "user" }, ];
 
-## Deploy on Vercel
+2. Admin can go to `/admin*` pages.
+3. Normal user can go to `/normalUser*` pages.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## How Middleware Works
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1.  The middleware looks at each request:
+2.  Checks if the page is protected.
+3.  If yes, checks if the user is logged in.
+4.  If the user is logged in, checks their role.
+5.  Redirects to `/` or `/auth/signin` if they aren’t allowed.
+6.  This makes sure only the right users see the right pages.
