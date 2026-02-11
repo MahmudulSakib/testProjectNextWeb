@@ -60,9 +60,10 @@ import "./.next/dev/types/routes.d.ts";
 
 ## How Middleware Works
 
-1.  The middleware looks at each request:
-2.  Checks if the page is protected.
-3.  If yes, checks if the user is logged in.
-4.  If the user is logged in, checks their role.
-5.  Redirects to `/` or `/auth/signin` if they aren’t allowed.
-6.  This makes sure only the right users see the right pages.
+The middleware looks at each request:
+
+1.  Checks if the page is protected.
+2.  If yes, checks if the user is logged in.
+3.  If the user is logged in, checks their role.
+4.  Redirects to `/` or `/auth/signin` if they aren’t allowed.
+5.  This makes sure only the right users see the right pages.
